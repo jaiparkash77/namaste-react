@@ -1,15 +1,47 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// React.createElement => React Element - JS Object => HTMLElement(render)
-const heading = React.createElement("h1", {id: "heading"}, "Namaste React 🎃");
-console.log(heading);
+// React Element
+const heading = (
+    <h1 id="heading">
+        Namaste React using JSX. This is react element
+    </h1>
+);
 
-// JSX - is not HTML is JS. It is HTML-like or XML-like syntax. (transpiled before it reaches the JS Engine) => Parcel - Babel
-// JSX => React.createElement => React Element - JS Object => HTMLElement(render)
-const jsxHeading = <h1 id="heading">Namaste react using JSX</h1>;
-console.log(jsxHeading);
+// React Component
+// Class Based Component - OLD
+// Functional Component - NEW
+
+// React Functional Component
+
+const Title = () => (
+    <h1 id="heading">
+        Namaste React using JSX
+    </h1>
+);
+
+const HeadingComponent = () =>{
+    return <h1>Namaste React Functional Component</h1>
+}
+
+const HeadingComponent2 = () => <h1>Namaste React Functional Component</h1>;
+
+// Component Composition - composing multiple component into single
+const HeadingComponent3 = () => (
+    <div id="container">
+        {heading}
+        <Title />
+        {Title()}
+        <Title></Title>
+        <h1>Namaste React Functional Component</h1>
+    </div>
+)
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(jsxHeading);
+// Rendering react element
+// root.render(heading);
+
+// Rendering react component
+root.render(<HeadingComponent3 />);
