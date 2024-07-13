@@ -1,5 +1,4 @@
 # React Development
-## Igniting our App - 1:05
 
 # Parcel
 - Dev Build
