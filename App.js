@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import {restaurants} from "./data"
 
 /*
 * Header
@@ -40,27 +41,30 @@ const styleCard = {
     backgroundColor: "#f0f0f0"
 }
 
-const RestaurantCard = () => {
+const RestaurantCard = (props) => {
+    const { resData } = props;
+    const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } = resData?.info;
     return (
         <div className="res-card" style={styleCard}>
-            <img className="res-img" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e0vvulfbahjxjz6k4uwi" alt="res-logo" />
-            <h3>Mehgana Foods</h3>
-            <h5>Biryani, North Indian, Asian</h5>
-            <h5>4.3 Stars</h5>
+            <img className="res-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId} alt={name} />
+            <h3>{name}</h3>
+            <h5>{cuisines.join(", ")}</h5>
+            <h5>{avgRating} Stars</h5>
+            <h5>{costForTwo}</h5>
         </div>
     )
 }
 
+// not using kyes (not acceptable) <<<<< index as key <<<<< unique id (best practice)
 const Body = () => {
     return (
         <div className="body">
             <div className="search">Search</div>
             <div className="res-container">
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
+                {restaurants.map((data)=>(
+                    <RestaurantCard resData={data} key={data?.info?.id} />
+                )
+                )}
             </div>
         </div>
     )
