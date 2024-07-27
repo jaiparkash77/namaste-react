@@ -1,4 +1,4 @@
-export const restaurants = [
+const resList = [
   {
     "info": {
       "id": "10575",
@@ -1967,3 +1967,5 @@ export const restaurants = [
     }
   }
 ];
+
+export default resList;
