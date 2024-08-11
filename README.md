@@ -58,3 +58,11 @@
 
 ## React Fiber
 https://github.com/acdlite/react-fiber-architecture
+
+# 2 Types of routing in webapps
+    - Client Side Routing
+    - Server Side Routing
+
+- Client Side Routing - We do not make any network call and the page renders from client side in UI.
+- Server Side Routing - We make a network call and the page comes from server which renders in UI.
+
