@@ -5,36 +5,45 @@ class UserClass extends React.Component {
         super(props);
         
         this.state = {
-            count: 0,
-            count2: 1,
+            userInfo: {
+                name: "Dummy",
+                location: "Default",
+            }
         }
 
         console.log(this.props.name + 'Child constructor');
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         console.log(this.props.name + 'Child componentDidMount');
 
-        // Api call        
+        // Api call  
+        const data = await fetch("https://api.github.com/users/jaiparkash77");
+        const json = await data.json();
+
+        this.setState({
+            userInfo: json,
+        })
+        
+        console.log(json);
+    }
+
+    componentDidUpdate() {
+        console.log('Child componentDidUpdate');
+    }
+
+    componentWillUnmount() {
+        // This will be called when the component will unmount from UI. For example we navigate to another page.
+        console.log('Child componentWillUnmount');
     }
 
     render() {
-        const {name, location} = this.props;
-        const { count, count2 } = this.state;
-        console.log('Child render');
-
+        const {name, location, avatar_url} = this.state.userInfo;
+        console.log("Child Render");
+        // debugger;
         return (
             <div className="user-card">
-                <h1>Count: {count}, Count: {count2}</h1>
-                <button onClick={()=> {
-                    // Never update state variable directly
-                    // If we have to update multiple state at once then we can do it in setState, no need to create multiple setState to update for different states.
-
-                    this.setState({
-                        count: this.state.count + 1,
-                        count2: this.state.count2 + 2,
-                    })
-                }}>Increase Count</button>
+                <img src={avatar_url} width={'200px'} />
                 <h2>Name: {name}</h2>
                 <h3>Location: {location}</h3>
                 <h4>Contact: @jaiparkash77</h4>
@@ -44,3 +53,21 @@ class UserClass extends React.Component {
 }
 
 export default UserClass;
+
+/*
+*
+* -------MOUNTING-----------
+*
+* Constructor (dummy)
+* Render (dummy)
+*           <HTML Dummy>
+* Component Did Mount
+*           <API call>
+*           <this.setState> -> State variable is updated
+*
+* --------UPDATE---------
+* 
+* Render (API data)
+* <HTML new api data>
+* Component Did Update
+*/
