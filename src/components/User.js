@@ -6,7 +6,11 @@ const User = (props) => {
 
     useEffect(()=> {
         // Api call
-    }, []);
+    }, [count, count2]);
+
+    // useEffect(()=> {
+    //     // Api call
+    // }, [count2]);
 
     return (
         <div className="user-card">
