@@ -6,7 +6,7 @@ class UserClass extends React.Component {
         
         this.state = {
             count: 0,
-            count2: 2,
+            count2: 1,
         }
     }
     render() {
@@ -15,8 +15,16 @@ class UserClass extends React.Component {
 
         return (
             <div className="user-card">
-                <h1>Count: {count}</h1>
-                <h1>Count2: {count2}</h1>
+                <h1>Count: {count}, Count: {count2}</h1>
+                <button onClick={()=> {
+                    // Never update state variable directly
+                    // If we have to update multiple state at once then we can do it in setState, no need to create multiple setState to update for different states.
+                    
+                    this.setState({
+                        count: this.state.count + 1,
+                        count2: this.state.count2 + 2,
+                    })
+                }}>Increase Count</button>
                 <h2>Name: {name}</h2>
                 <h3>Location: {location}</h3>
                 <h4>Contact: @jaiparkash77</h4>
