@@ -8,10 +8,20 @@ class UserClass extends React.Component {
             count: 0,
             count2: 1,
         }
+
+        console.log('Child constructor');
     }
+
+    componentDidMount() {
+        console.log('Child componentDidMount');
+
+        // Api call        
+    }
+
     render() {
         const {name, location} = this.props;
         const { count, count2 } = this.state;
+        console.log('Child render');
 
         return (
             <div className="user-card">
@@ -19,7 +29,7 @@ class UserClass extends React.Component {
                 <button onClick={()=> {
                     // Never update state variable directly
                     // If we have to update multiple state at once then we can do it in setState, no need to create multiple setState to update for different states.
-                    
+
                     this.setState({
                         count: this.state.count + 1,
                         count2: this.state.count2 + 2,
