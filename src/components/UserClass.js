@@ -14,18 +14,12 @@ class UserClass extends React.Component {
         console.log(this.props.name + 'Child constructor');
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         console.log(this.props.name + 'Child componentDidMount');
 
-        // Api call  
-        const data = await fetch("https://api.github.com/users/jaiparkash77");
-        const json = await data.json();
-
-        this.setState({
-            userInfo: json,
-        })
-        
-        console.log(json);
+        this.timer = setInterval(()=> {
+            console.log("Interval is calling");
+        }, 1000)
     }
 
     componentDidUpdate(preProps, preState) {
@@ -42,6 +36,7 @@ class UserClass extends React.Component {
     componentWillUnmount() {
         // This will be called when the component will unmount from UI. For example we navigate to another page.
         console.log('Child componentWillUnmount');
+        clearInterval(this.timer);
     }
 
     render() {

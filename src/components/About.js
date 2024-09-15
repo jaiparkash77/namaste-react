@@ -15,12 +15,13 @@ class About extends React.Component {
 
   render() {
     // console.log('Parent render');
-    
+
     return (
       <div>
           <h1>About Page</h1>
           <h2>This is about page of namaste react.</h2>
-          <UserClass name={"Jai Parkash (class)"} location={"Delhi (class)"} />
+          <User name={"Jai Parkash (function)"} location={"Delhi (function)"} />
+          {/* <UserClass name={"Om Parkash (class)"} location={"Delhi (class)"} /> */}
       </div>
     )
   }

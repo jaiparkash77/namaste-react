@@ -5,12 +5,20 @@ const User = (props) => {
     const [count2] = useState(2);
 
     useEffect(()=> {
-        // Api call
-    }, [count, count2]);
+        console.log('UseEffect');
 
-    // useEffect(()=> {
-    //     // Api call
-    // }, [count2]);
+        const timer = setInterval(()=> {
+            console.log("useEffect Interval is calling");
+        }, 1000)
+
+        // Unmounting
+        return () => {
+            console.log("useEffect return");
+            clearInterval(timer);
+        }
+    }, []);
+
+    console.log('Render')
 
     return (
         <div className="user-card">
