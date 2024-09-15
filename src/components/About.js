@@ -20,10 +20,31 @@ class About extends React.Component {
           <h1>About Page</h1>
           <h2>This is about page of namaste react.</h2>
           <UserClass name={"Jai Parkash (class)"} location={"Delhi (class)"} />
+          <UserClass name={"Om Parkash (class)"} location={"Delhi (class)"} />
       </div>
     )
   }
 }
+
+/*
+Life cycle method for these components
+
+- Parent Constructor
+- Parent Render
+  - First Child Constructor
+  - First Child Render
+
+  - Second Child Constructor
+  - Second Child Constructor
+
+  <DOM UPDATED - IN SINGLE BATCH>
+  - First Child componentDidMount
+  - Second Child componentDidMount
+
+- Parent componentDidMount
+
+
+*/
 
 // const About = () => {
   // return (

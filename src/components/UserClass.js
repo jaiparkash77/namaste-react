@@ -9,11 +9,11 @@ class UserClass extends React.Component {
             count2: 1,
         }
 
-        console.log('Child constructor');
+        console.log(this.props.name + 'Child constructor');
     }
 
     componentDidMount() {
-        console.log('Child componentDidMount');
+        console.log(this.props.name + 'Child componentDidMount');
 
         // Api call        
     }
