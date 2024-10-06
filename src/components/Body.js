@@ -30,23 +30,25 @@ const Body = () => {
 
     return filteredRestaurants.length === 0 ? ( <Shimmer /> ) : (
         <div className="body">
-            <div className="filter">
-                <div className="search">
-                    <input type="text" className="search-box" value={searchText} onChange={(e)=> {
+            <div className="filter flex">
+                <div className="m-4 p-4">
+                    <input type="text" className="border border-black border-solid" value={searchText} onChange={(e)=> {
                         setSearchText(e.target.value);
                     }} />
-                    <button onClick={()=>{
+                    <button className="px-4 py-2 m-4 bg-green-100 rounded-lg" onClick={()=> {
                         // Filter the restaurants cards and update the UI
                         const filteredRestaurants = listOfRestaurants.filter((res)=> res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         setFilteredRestaurants(filteredRestaurants);
                     }}>Search</button>
                 </div>
-                <button className="filter-btn" onClick={()=> {
-                    const filteredList = listOfRestaurants.filter((res)=> res.info.avgRating > 4.3);
-                    setListOfRestaurants(filteredList);
-                }}>Top Rated Restaurants</button>
+                <div className="m-4 p-4">
+                    <button className="px-4 py-2 m-4 bg-gray-100 rounded-lg" onClick={()=> {
+                        const filteredList = listOfRestaurants.filter((res)=> res.info.avgRating > 4.3);
+                        setListOfRestaurants(filteredList);
+                    }}>Top Rated Restaurants</button>
+                </div>
             </div>
-            <div className="res-container">
+            <div className="flex flex-wrap">
                 {filteredRestaurants.map((restaurant)=>(
                     <Link to={"/restaurants/"+restaurant.info.id} key={restaurant.info.id}><RestaurantCard resData={restaurant} /></Link>
                 )
