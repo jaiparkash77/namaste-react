@@ -15,4 +15,19 @@ const RestaurantCard = (props) => {
     )
 }
 
+// Higher Order Component
+// input - Restaurant Card -> Restaurant Card Aggregated Discount
+
+export const withAggregatedDiscount = (RestaurantCard) => {
+    // returning new component with aggregated discount
+    return (props) => {
+        return (
+            <div>
+                <label className="absolute bg-black text-white m-1 p-2 rounded-lg">{props?.redData?.info?.aggregatedDiscountInfoV3?.header} {props?.resData?.info?.aggregatedDiscountInfoV3?.subHeader}</label>
+                <RestaurantCard {...props} />
+            </div>
+        )
+    }
+}
+
 export default RestaurantCard;
