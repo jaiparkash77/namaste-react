@@ -23,7 +23,7 @@ export const withAggregatedDiscount = (RestaurantCard) => {
     return (props) => {
         return (
             <div>
-                <label className="absolute bg-black text-white m-1 p-2 rounded-lg">{props?.redData?.info?.aggregatedDiscountInfoV3?.header} {props?.resData?.info?.aggregatedDiscountInfoV3?.subHeader}</label>
+                <label className="absolute bg-black text-white m-1 p-2 rounded-lg text-sm">{props?.resData?.info?.aggregatedDiscountInfoV3?.discountTag} {props?.resData?.info?.aggregatedDiscountInfoV3?.header} {props?.resData?.info?.aggregatedDiscountInfoV3?.subHeader}</label>
                 <RestaurantCard {...props} />
             </div>
         )
